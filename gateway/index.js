@@ -1,4 +1,6 @@
 import express from "express";
+import cors from "cors";
+
 
 const PORT = 3000;
 const app = express();
@@ -7,7 +9,7 @@ const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: FRONTEND_URL || "http://localhost:8080",
+        origin: "http://localhost:8080",
     })
 );
 
@@ -19,18 +21,15 @@ app.use((error, req, res, next) => {
 
 // Middlewares
 app.use(express.json());
-app.use(morgan("dev"));
-
 
 async function init() {
     try {
         app.listen(PORT);
-        console.log(`<<Listening on port http://localhost:${PORT}>>`);
-        console.log(`<<Environment: ${NODE_ENV}>>`);
+        console.log(`<< GATEWAY == Listening on port http://localhost:${PORT}>>`);
     } catch (error) {
         console.log("Error");
         console.error(error);
     }
 }
 
-await init().then(r => console.log(">>Init done<<"));
+await init().then(r => console.log(">> GATEWAY == Init done<<"));
