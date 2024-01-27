@@ -20,3 +20,13 @@ export const insertWord = (req, res, next) => {
         res.json(results);
     });
 }
+
+export const getRandoWord = (req, res, next) => {
+    connection.query("SELECT * FROM words ORDER BY RAND() LIMIT 1", (err, results) => {
+        if (err) {
+            console.error(err);
+            return next(err);
+        }
+        res.json(results);
+    });
+}

@@ -1,0 +1,30 @@
+{
+    "word": "moms",
+    "attempt": 3,
+    "success": true,
+    "state": [
+        {
+            "char": "m",
+            "pos": 0,
+            "correct": true
+        },
+        {
+            "char": "o",
+            "pos": 1,
+            "correct": true
+        },
+        {
+            "char": "m",
+            "pos": 2,
+            "correct": true
+        },
+        {
+            "char": "s",
+            "pos": 3,
+            "correct": true
+        }
+    ],
+    "lastchar": "m",
+    "lastcharpos": [0, 2],
+    "won": true
+}
