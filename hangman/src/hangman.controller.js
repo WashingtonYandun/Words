@@ -38,8 +38,5 @@ export const updateGame = (req, res, next) => {
     gameState.success = gameState.state.every(letter => letter.correct);
     gameState.won = gameState.success || gameState.attempts >= MAX_ATTEMPTS;
 
-
-    updateGameState(char);
-
     res.json(gameState);
 }
