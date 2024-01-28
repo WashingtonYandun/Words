@@ -44,6 +44,6 @@ export const updateGame = (req, res, next) => {
     catch (error) {
         console.log(error);
         console.log(req.body)
-        next(error);
+        res.status(500).send(">> WORDLE == Something went wrong!");
     }
 }

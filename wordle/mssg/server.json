@@ -1,7 +1,7 @@
 {
-    "attempt": "2",
-    "target": "honey",
-    "word": "money",
+    "attempt": 2,
+    "target_word": "honey",
+    "current_word": "money",
     "state": ["ALLOW", "HoNEY"],
     "won": false
 }
