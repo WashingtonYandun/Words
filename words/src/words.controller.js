@@ -11,7 +11,7 @@ export const getWords = (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        next(error);
+        res.status(500).send(">> WORDS == Something went wrong!");
     }
 }
 
@@ -27,7 +27,7 @@ export const insertWord = (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        next(error);
+        res.status(500).send(">> WORDS == Something went wrong!");
     }
 }
 
@@ -42,6 +42,6 @@ export const getRandomWord = (req, res, next) => {
         });
     } catch (error) {
         console.log(error);
-        next(error);
+        res.status(500).send(">> WORDS == Something went wrong!");
     }
 }

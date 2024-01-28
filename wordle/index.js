@@ -25,7 +25,7 @@ app.use(express.json());
 // Routes
 app.use(router);
 
-async function init() {
+export async function init() {
     try {
         app.listen(PORT);
         console.log(`<< WORDLE == Listening on port http://localhost:${PORT}>>`);
