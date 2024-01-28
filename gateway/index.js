@@ -30,6 +30,8 @@ app.use(express.json());
 
 // API Gateway routes
 app.all("/word/*", function (req, res) {
+    console.log("Redirecting to words service");
+    console.log(req.url);
     apiProxy.web(req, res, { target: words });
 });
 
