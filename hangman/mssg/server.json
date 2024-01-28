@@ -1,0 +1,35 @@
+{
+    "word": "honey",
+    "attempts": 1,
+    "success": false,
+    "state": [
+        {
+            "char": "h",
+            "pos": 0,
+            "correct": false
+        },
+        {
+            "char": "o",
+            "pos": 1,
+            "correct": true
+        },
+        {
+            "char": "n",
+            "pos": 2,
+            "correct": false
+        },
+        {
+            "char": "e",
+            "pos": 3,
+            "correct": false
+        },
+        {
+            "char": "4",
+            "pos": 3,
+            "correct": false
+        }
+    ],
+    "lastchar": "o",
+    "lastcharpos": [1],
+    "won": false
+}

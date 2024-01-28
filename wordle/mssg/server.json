@@ -1,0 +1,7 @@
+{
+    "attempt": "2",
+    "target": "honey",
+    "word": "money",
+    "state": ["ALLOW", "HoNEY"],
+    "won": false
+}

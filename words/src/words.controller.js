@@ -22,6 +22,7 @@ export const insertWord = (req, res, next) => {
 }
 
 export const getRandoWord = (req, res, next) => {
+    console.log("getRandoWord");
     connection.query("SELECT * FROM words ORDER BY RAND() LIMIT 1", (err, results) => {
         if (err) {
             console.error(err);
