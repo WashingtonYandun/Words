@@ -1,10 +1,16 @@
 import mysql from "mysql";
 
+let host = process.env.host
+let user = process.env.user
+let password = process.env.password
+let database = process.env.database
+
+
 export const connection = mysql.createConnection({
-    host: "",
-    user: "",
-    password: "",
-    database: "",
+    host: host,
+    user: user,
+    password: password,
+    database: database,
 });
 
 connection.connect((err) => {
