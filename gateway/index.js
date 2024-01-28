@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import axios from "axios";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.gateway_port || 3000;
 
 app.use(bodyParser.json());
 
@@ -47,7 +47,7 @@ app.post('/wordle/:endpoint', async (req, res) => {
 async function init() {
     try {
         app.listen(PORT);
-        console.log(`<< GATEWAY == Listening on port http://localhost:${PORT}>>`);
+        console.log(`<< GATEWAY == Listening on port ${PORT}>>`);
     } catch (error) {
         console.log("Error");
         console.error(error);

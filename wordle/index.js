@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { router } from "./src/wordle.routes.js";
 
-const PORT = 3003;
+const PORT = process.env.wordle_port || 3003;
 const app = express();
 
 // Enable CORS
@@ -25,7 +25,7 @@ app.use(express.json());
 // Routes
 app.use(router);
 
-export async function init() {
+async function init() {
     try {
         app.listen(PORT);
         console.log(`<< WORDLE == Listening on port http://localhost:${PORT}>>`);

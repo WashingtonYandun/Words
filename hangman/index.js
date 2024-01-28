@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { router } from "./src/hangman.routes.js";
 
-const PORT = 3002;
+const PORT = process.env.hangman_port || 3002;
 const app = express();
 
 // Enable CORS
