@@ -12,7 +12,7 @@ const words = 'http://localhost:3001/word';
 const hangman = 'http://localhost:3002/hangman';
 const wordle = 'http://localhost:3003/wordle';
 
-app.post('/words/:endpoint', async (req, res) => {
+app.post('/word/:endpoint', async (req, res) => {
     try {
         const { endpoint } = req.params;
         const response = await axios.post(`${words}/${endpoint}`, req.body);
