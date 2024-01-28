@@ -1,15 +1,21 @@
 import express from "express";
 import cors from "cors";
-
+import httpProxy from 'http-proxy';
 
 const PORT = 3000;
 const app = express();
+const apiProxy = httpProxy.createProxyServer();
+
+// Define services URLs
+const words = 'http://localhost:3001';
+const hangman = 'http://localhost:3002';
+const wordle = 'http://localhost:3003';
 
 // Enable CORS
 app.use(
     cors({
         credentials: true,
-        origin: "http://localhost:8080",
+        origin: ["http://localhost:8080", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003"],
     })
 );
 
@@ -21,6 +27,20 @@ app.use((error, req, res, next) => {
 
 // Middlewares
 app.use(express.json());
+
+// API Gateway routes
+app.all("/word/*", function (req, res) {
+    apiProxy.web(req, res, { target: words });
+});
+
+app.all("/hangman/*", function (req, res) {
+    apiProxy.web(req, res, { target: hangman });
+});
+
+app.all("/wordle/*", function (req, res) {
+    apiProxy.web(req, res, { target: wordle });
+});
+
 
 async function init() {
     try {
