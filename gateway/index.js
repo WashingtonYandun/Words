@@ -1,46 +1,48 @@
 import express from "express";
-import cors from "cors";
-import httpProxy from 'http-proxy';
+import bodyParser from "body-parser";
+import axios from "axios";
 
-const PORT = 3000;
 const app = express();
-const apiProxy = httpProxy.createProxyServer();
+const PORT = 3000;
+
+app.use(bodyParser.json());
 
 // Define services URLs
-const words = 'http://localhost:3001';
-const hangman = 'http://localhost:3002';
-const wordle = 'http://localhost:3003';
+const words = 'http://localhost:3001/word';
+const hangman = 'http://localhost:3002/hangman';
+const wordle = 'http://localhost:3003/wordle';
 
-// Enable CORS
-app.use(
-    cors({
-        credentials: true,
-        origin: ["http://localhost:8080", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003"],
-    })
-);
-
-// Error handler
-app.use((error, req, res, next) => {
-    console.error(error);
-    res.status(500).send("Something went wrong!");
+app.post('/words/:endpoint', async (req, res) => {
+    try {
+        const { endpoint } = req.params;
+        const response = await axios.post(`${words}/${endpoint}`, req.body);
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error: 'Error at words service' });
+    }
 });
 
-// Middlewares
-app.use(express.json());
-
-// API Gateway routes
-app.all("/word/*", function (req, res) {
-    apiProxy.web(req, res, { target: words });
+app.post('/hangman/:endpoint', async (req, res) => {
+    try {
+        const { endpoint } = req.params;
+        const response = await axios.post(`${hangman}/${endpoint}`, req.body);
+        console.log(response.data)
+        res.json(response.data);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: 'Error at hangman service' });
+    }
 });
 
-app.all("/hangman/*", function (req, res) {
-    apiProxy.web(req, res, { target: hangman });
+app.post('/wordle/:endpoint', async (req, res) => {
+    try {
+        const { endpoint } = req.params;
+        const response = await axios.post(`${wordle}/${endpoint}`, req.body);
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error: 'Error en el servicio de wordle' });
+    }
 });
-
-app.all("/wordle/*", function (req, res) {
-    apiProxy.web(req, res, { target: wordle });
-});
-
 
 async function init() {
     try {
