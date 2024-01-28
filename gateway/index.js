@@ -8,9 +8,9 @@ const PORT = process.env.gateway_port || 3000;
 app.use(bodyParser.json());
 
 // Define services URLs
-const words = 'http://localhost:3001/word';
-const hangman = 'http://localhost:3002/hangman';
-const wordle = 'http://localhost:3003/wordle';
+const words = 'https://words-w.vercel.app/word';
+const hangman = 'https://words-h.vercel.app/hangman';
+const wordle = 'https://words-wl.vercel.appwordle';
 
 app.post('/word/:endpoint', async (req, res) => {
     try {
