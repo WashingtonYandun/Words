@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 // Define services URLs
 const words = 'https://words-w.vercel.app/word';
 const hangman = 'https://words-h.vercel.app/hangman';
-const wordle = 'https://words-wl.vercel.appwordle';
+const wordle = 'https://words-wl.vercel.app/wordle';
 
 app.post('/word/:endpoint', async (req, res) => {
     try {
